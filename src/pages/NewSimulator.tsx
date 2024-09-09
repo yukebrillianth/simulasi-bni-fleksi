@@ -79,7 +79,6 @@ export default function NewSimulator() {
       const sisaHutang = angsuran * tenor;
       return acc + sisaHutang;
     }, 0);
-    console.log(total);
     setSumOfSisaHutang(total);
   };
 
@@ -114,8 +113,6 @@ export default function NewSimulator() {
       return pv;
     };
     const calc = calculatePV(sukuBunga, period, income * 0.6);
-    console.log(sukuBunga, period);
-    console.log(calc);
     setMaxCredit(calc);
   }
 
@@ -145,7 +142,8 @@ export default function NewSimulator() {
                   <h4 className="text-xl mb-4">Simulasi Angsuran Lainnya</h4>
                   {fields.map((item, index) => (
                     <div key={item.id} className="flex items-center gap-4 mb-4">
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="grid lg:grid-cols-3 gap-4">
+                        <Separator className="my-5 lg:hidden" />
                         <FormField
                           control={form.control}
                           name={`pinjamanDiBankLain.${index}.amount`}
