@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "./components/ui/separator";
 import { formatRupiah } from "./lib/utils";
 import { useState } from "react";
-import React from "react";
 import { Input } from "./components/ui/input";
 
 const FormSchema = z.object({
