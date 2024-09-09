@@ -44,8 +44,7 @@ function Logo() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="57.931"
+      className="max-w-[150px]"
       version="1.1"
       viewBox="0 0 52.917 15.328"
     >
@@ -142,8 +141,11 @@ function App() {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     // Parse form inputs
-    const income = parseInt(data.monthlyIncome || "0");
-    const otherLoans = parseInt(data.pinjamanDiBankLain || "0");
+    const income = parseInt(data.monthlyIncome.replace(/\./g, "") || "0", 10);
+    const otherLoans = parseInt(
+      data.pinjamanDiBankLain.replace(/\./g, "") || "0",
+      10
+    );
     const period = parseInt(data.jangkaWaktuKredit || "0");
 
     setMonthlyIncome(income);
@@ -215,7 +217,18 @@ function App() {
                           <Input
                             className="pl-10"
                             placeholder="10.000.000"
-                            type="number"
+                            type="text"
+                            onInput={(e) => {
+                              const value = e.currentTarget.value.replace(
+                                /\D/g,
+                                ""
+                              );
+                              const formattedValue = value.replace(
+                                /\B(?=(\d{3})+(?!\d))/g,
+                                "."
+                              );
+                              e.currentTarget.value = formattedValue;
+                            }}
                             {...field}
                           />
                         </div>
@@ -241,7 +254,18 @@ function App() {
                           <Input
                             className="pl-10"
                             placeholder="1.500.000"
-                            type="number"
+                            type="text"
+                            onInput={(e) => {
+                              const value = e.currentTarget.value.replace(
+                                /\D/g,
+                                ""
+                              );
+                              const formattedValue = value.replace(
+                                /\B(?=(\d{3})+(?!\d))/g,
+                                "."
+                              );
+                              e.currentTarget.value = formattedValue;
+                            }}
                             {...field}
                           />
                         </div>
@@ -297,9 +321,6 @@ function App() {
                     </h4>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
                 <div className="flex-1 lg:max-w-2xl">
                   <div className="space-y-0.5 my-5">
                     <p className="text-muted-foreground">Net Angsuran</p>
@@ -309,7 +330,7 @@ function App() {
                   </div>
                 </div>
                 <div className="flex-1 lg:max-w-2xl">
-                  <div className="my-5">
+                  <div className="space-y-0.5 my-5">
                     <p className="text-muted-foreground">Maks. Kredit</p>
                     <h4 className="text-2xl font-bold tracking-tight">
                       {formatRupiah(maxCredit)}
