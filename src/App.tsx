@@ -32,8 +32,7 @@ const FormSchema = z.object({
     .string({
       required_error: "Masukan jangka waktu kredit anda.",
     })
-    .min(1, "Jangka waktu kredit minimal 1 tahun.")
-    .max(25, "Jangka waktu kredit maksimal 25 tahun."),
+    .min(1, "Jangka waktu kredit minimal 1 bulan."),
 });
 
 type SimulationFormValues = z.infer<typeof FormSchema>;
@@ -282,7 +281,7 @@ function App() {
                   name="jangkaWaktuKredit"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Jangka Waktu Kredit</FormLabel>
+                      <FormLabel>Jangka Waktu Kredit (Bulan)</FormLabel>
                       <FormControl>
                         <Input placeholder="24" type="number" {...field} />
                       </FormControl>
