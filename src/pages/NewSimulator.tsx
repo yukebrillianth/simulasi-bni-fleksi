@@ -122,8 +122,10 @@ export default function NewSimulator() {
         <CardHeader>
           <div className="flex flex-row justify-between">
             <div>
-              <CardTitle className="mb-2">Simulasi Angsuran</CardTitle>
-              <CardDescription>
+              <CardTitle className="mb-2 text-base lg:text-2xl">
+                Simulasi Angsuran
+              </CardTitle>
+              <CardDescription className="text-xs lg:text-sm">
                 Simulasi Angsuran eForm BNI FLEKSI AKTIF
               </CardDescription>
             </div>
@@ -250,13 +252,10 @@ export default function NewSimulator() {
                     Tambah Pinjaman Lain
                   </Button>
                 </div>
-                <div className="col-span-2">
-                  <h4 className="text-xl text-blue-900 font-bold">
-                    Dengan Pinjaman Lainnya
-                  </h4>
-                  <div className="flex flex-col lg:flex-row mb-4">
-                    <div className="flex-1 lg:max-w-2xl">
-                      <div className="space-y-0.5 my-5">
+                <div className="col-span-2 lg:-my-5 ">
+                  <div className="flex flex-col lg:flex-row">
+                    <div className="flex-1 lg:max-w-2xl lg:-mb-5">
+                      <div className="space-y-0.5 mb-10 lg:md-0">
                         <p className="text-muted-foreground">
                           Total Angsuran/Bulan
                         </p>
@@ -265,44 +264,10 @@ export default function NewSimulator() {
                         </h4>
                       </div>
                     </div>
-                    <div className="flex-1 lg:max-w-2xl">
-                      <div className="space-y-0.5 my-5">
+                    <div className="flex-1 lg:max-w-2xl lg:-mb-5">
+                      <div className="space-y-0.5">
                         <p className="text-muted-foreground">
                           Total Sisa Hutang
-                        </p>
-                        <h4 className="text-2xl font-bold tracking-tight">
-                          {formatRupiah(sumOfSisaHutang)}
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 className="text-xl text-orange-600 font-bold">
-                    Dengan BNI Fleksi
-                  </h4>
-                  <div className="flex flex-col lg:flex-row">
-                    <div className="flex-1 lg:max-w-2xl">
-                      <div className="space-y-0.5 my-5">
-                        <p className="text-muted-foreground">
-                          Angsuran Per Bulan
-                        </p>
-                        <h4 className="text-2xl font-bold tracking-tight">
-                          {formatRupiah(
-                            (+(sukuBunga / 12) /
-                              (1 -
-                                Math.pow(
-                                  1 + sukuBunga / 12,
-                                  -jangkaWaktuKredit
-                                ))) *
-                              (sumOfSisaHutang * 1) || 0
-                          )}
-                        </h4>
-                      </div>
-                    </div>
-                    <div className="flex-1 lg:max-w-2xl">
-                      <div className="space-y-0.5 my-5">
-                        <p className="text-muted-foreground">
-                          Nominal Pinjaman
                         </p>
                         <h4 className="text-2xl font-bold tracking-tight">
                           {formatRupiah(sumOfSisaHutang)}
@@ -374,6 +339,42 @@ export default function NewSimulator() {
                 </Button>
 
                 <div className="col-span-2">
+                  <h4 className="text-xl text-orange-600 font-bold">
+                    Dengan BNI Fleksi
+                  </h4>
+                  <div className="flex flex-col lg:flex-row">
+                    <div className="flex-1 lg:max-w-2xl">
+                      <div className="space-y-0.5 my-5">
+                        <p className="text-muted-foreground">
+                          Angsuran Per Bulan
+                        </p>
+                        <h4 className="text-2xl font-bold tracking-tight">
+                          {formatRupiah(
+                            (+(sukuBunga / 12) /
+                              (1 -
+                                Math.pow(
+                                  1 + sukuBunga / 12,
+                                  -jangkaWaktuKredit
+                                ))) *
+                              (sumOfSisaHutang * 1) || 0
+                          )}
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="flex-1 lg:max-w-2xl">
+                      <div className="space-y-0.5 my-5">
+                        <p className="text-muted-foreground">
+                          Nominal Pinjaman
+                        </p>
+                        <h4 className="text-2xl font-bold tracking-tight">
+                          {formatRupiah(sumOfSisaHutang)}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                  <h4 className="text-xl text-center my-6 font-bold">
+                    Maksimal Kredit yang bisa Anda Dapatkan
+                  </h4>
                   <div className="flex flex-col lg:flex-row">
                     <div className="flex-1 lg:max-w-2xl">
                       <div className="space-y-0.5 my-5">
@@ -400,7 +401,7 @@ export default function NewSimulator() {
                     <div className="flex-1 lg:max-w-2xl">
                       <div className="space-y-0.5 my-5">
                         <p className="text-muted-foreground">
-                          Angsuran Per Bulan (DSR 60%)
+                          Maksimal Angsuran Per Bulan
                         </p>
                         <h4 className="text-2xl font-bold tracking-tight">
                           {formatRupiah(monthlyIncome * 0.6)}
