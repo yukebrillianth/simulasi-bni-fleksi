@@ -340,7 +340,7 @@ export default function NewSimulator() {
 
                 <div className="col-span-2">
                   <h4 className="text-xl text-orange-600 font-bold">
-                    Dengan BNI Fleksi
+                    Dengan BNI Fleksi <span className="text-red-600">*</span>
                   </h4>
                   <div className="flex flex-col lg:flex-row">
                     <div className="flex-1 lg:max-w-2xl">
@@ -373,7 +373,7 @@ export default function NewSimulator() {
                     </div>
                   </div>
                   <h4 className="text-xl text-center my-6 font-bold">
-                    Maksimal Kredit yang bisa Anda Dapatkan
+                    Maksimal Kredit yang bisa Anda Dapatkan
                   </h4>
                   <div className="flex flex-col lg:flex-row">
                     <div className="flex-1 lg:max-w-2xl">
@@ -419,6 +419,10 @@ export default function NewSimulator() {
                       </div>
                     </div>
                   </div>
+                  <p className="text-red-600 text-xs">
+                    * angka tersebut merupakan estimasi, untuk biaya yang timbul
+                    dapat dimasukkan dalam maksimal kredit yang didapatkan.
+                  </p>
                 </div>
               </div>
             </form>
